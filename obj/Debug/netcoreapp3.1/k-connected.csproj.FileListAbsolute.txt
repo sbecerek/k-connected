@@ -10,8 +10,6 @@ C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\k-connected.pdb
 C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.csprojAssemblyReference.cache
 C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.AssemblyInfoInputs.cache
 C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.AssemblyInfo.cs
-C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.csproj.CoreCompileInputs.cache
-C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.RazorTargetAssemblyInfo.cache
 C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\staticwebassets\k-connected.StaticWebAssets.Manifest.cache
 C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\staticwebassets\k-connected.StaticWebAssets.xml
@@ -39,3 +37,13 @@ C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\System.ComponentModel
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.csproj.CoreCompileInputs.cache
+C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.MvcApplicationPartsAssemblyInfo.cache
