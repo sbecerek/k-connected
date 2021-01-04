@@ -35,9 +35,8 @@ namespace k_connected.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate([FromForm] UserCred user) 
+        public IActionResult Authenticate([FromForm] LoginCredentials user) 
         {
-            System.Console.WriteLine("here");
             var token = jwtAuthenticationManager.Authenticate(user.Username, user.Password);
             if (token == null)
                 return Unauthorized();
