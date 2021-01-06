@@ -6,26 +6,30 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using k_connected.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace k_connected
 {
     public class JwtAuthenticationManager : IJwtAuthenticationManager
     {
 
-        private readonly IDictionary<string, string> users = new Dictionary<string, string> { { "admin", "iamadmin" }, { "user", "pp" } };
+        private readonly IDictionary<string, string> users = new Dictionary<string, string> { { "admin", "iamadmin" } };
 
         private readonly string key;
+
+        private readonly UserDBContext ctx;
 
         public JwtAuthenticationManager(string key)
         {
             this.key = key;
+            ctx = new UserDBContext();
         }
         
         public string Authenticate(string username, string password)
         {
-            if (!users.Any(u => u.Key == username && u.Value == password))
+            if (!users.Any(u => u.Key == username && u.Value == password) && !ctx.users.FromSqlRaw("SELECT * FROM Entity").Any(u => u.Username == username && u.Passwd == password))
                 return null;
-
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.ASCII.GetBytes(key);

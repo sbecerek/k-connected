@@ -48,7 +48,7 @@ $(document).ready(() => {
         let opt = $(this).val();
         console.log(opt);
 
-        if (opt == "All")
+        if (opt == "Any")
             $.ajax({
                 type: "GET",
                 url: "api/Technology/",
@@ -68,6 +68,16 @@ $(document).ready(() => {
                 }
             });
 
+    });
+
+
+    $.ajax({
+        type: "GET",
+        url: "api/Home/",
+        success: function (response) {
+            console.log(response)
+            displayData(response);
+        }
     });
 
 

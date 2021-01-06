@@ -5,18 +5,25 @@ namespace k_connected.API.Models
 {
     public class User
     {
+        [Key]
         public string Username { get; set; }
 
-        public string Coordinate {get; set; }
+        public string Passwd {get; set;}
 
-        private List<string> _Technologies = new List<string>();
+        public string Firstname { get; set; }
 
-        public List<string> Technologies {
-            get {return _Technologies;}
+        public string Lastname { get; set; }
 
-            set { _Technologies = value;}
-        }
-        
+        public string Country { get; set; }
+
+        public string City { get; set; }
+
+        public string Street { get; set; }
+
+        public int Apartment { get; set; }
+        public  string Email {get;set;}
+        public List<Skill> Technologies { get; set; } = new List<Skill>();
+
 
     }
 }
