@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using k_connected.API.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Logging;
 
 namespace k_connected
 {
@@ -18,17 +19,17 @@ namespace k_connected
 
         private readonly string key;
 
-        private readonly UserDBContext ctx;
+        private readonly kconnectedDBContext ctx;
 
         public JwtAuthenticationManager(string key)
         {
             this.key = key;
-            ctx = new UserDBContext();
+            ctx = new kconnectedDBContext();
         }
         
         public string Authenticate(string username, string password)
         {
-            if (!users.Any(u => u.Key == username && u.Value == password) && !ctx.users.FromSqlRaw("SELECT * FROM Entity").Any(u => u.Username == username && u.Passwd == password))
+            if (!users.Any(u => u.Key == username && u.Value == password) && !ctx.Entity.Any(u => u.Username == username && u.Passwd == password))
                 return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -50,5 +51,6 @@ namespace k_connected
             return tokenHandler.WriteToken(token);
 
         }
+
     }
 }

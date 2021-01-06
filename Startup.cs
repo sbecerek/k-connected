@@ -31,17 +31,19 @@ namespace k_connected
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContextPool<UserDBContext>(options =>
+            services.AddDbContextPool<kconnectedDBContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
 
-            
-            
-            services.AddControllers();
 
-            var key = "This is my test key";
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
+
+            var key = "this is a string used for encrypt and decrypt token";
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -60,6 +62,9 @@ namespace k_connected
             });
 
             services.AddSingleton<IJwtAuthenticationManager>(new JwtAuthenticationManager(key));
+
+
+
 
         }
 

@@ -1,20 +1,17 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
 namespace k_connected.API.Models
 {
-    public class Skill
+    public partial class Skill
     {
-
         public Skill()
         {
-            
-        }
-        public Skill(string param)
-        {
-            Name = param;
+            Knowledge = new HashSet<Knowledge>();
         }
 
-        [Key]
-        public string Name { get; set; }
+        public string SkillName { get; set; }
+
+        public virtual ICollection<Knowledge> Knowledge { get; set; }
     }
 }

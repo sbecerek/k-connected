@@ -37,8 +37,6 @@ C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\System.Configuration.
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.csproj.CoreCompileInputs.cache
-C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
@@ -46,3 +44,5 @@ C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\runtimes\win-x64\nati
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\suhey\Desktop\k-connected\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.csproj.CoreCompileInputs.cache
+C:\Users\suhey\Desktop\k-connected\obj\Debug\netcoreapp3.1\k-connected.MvcApplicationPartsAssemblyInfo.cache

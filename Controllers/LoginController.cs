@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web.Http.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,9 +23,13 @@ namespace k_connected.API.Controllers
         }
         // GET: api/<NameController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult Get()
         {
-            return new string[] { "suheyb", "mehmet" };
+            // Console.WriteLine();
+            CurrentUser.Username = HttpContext.User.Identity.Name;
+
+
+            return Ok(CurrentUser.Username);
         }
 
         // GET api/<NameController>/5
@@ -40,6 +46,7 @@ namespace k_connected.API.Controllers
             var token = jwtAuthenticationManager.Authenticate(user.Username, user.Password);
             if (token == null)
                 return Unauthorized();
+
             return Ok(token);
         }
 
