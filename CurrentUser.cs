@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace k_connected
 {
-    public static class CurrentUser 
+    public static class CurrentUser
     {
         public static string Username { get; set; }
     }

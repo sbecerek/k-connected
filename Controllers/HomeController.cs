@@ -16,11 +16,25 @@ namespace k_connected.API.Controllers
             ctx = new kconnectedDBContext();
         }
 
-        public ActionResult Get()
+
+        [HttpGet("otherusers")]
+        public ActionResult getOtherUsers()
         {
 
 
             var q = ctx.Entity.Where(user => user.Username != CurrentUser.Username).Include(k => k.Knowledge).ThenInclude(k => k.SkillNameNavigation).ToList();        
+
+            return Ok(q);
+
+        }
+
+
+        [HttpGet("currentuser")]
+        public ActionResult getCurrentUser()
+        {
+
+
+            var q = ctx.Entity.Where(user => user.Username == CurrentUser.Username).Include(k => k.Knowledge).ThenInclude(k => k.SkillNameNavigation).ToList();
 
             return Ok(q);
 

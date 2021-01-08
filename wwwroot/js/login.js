@@ -1,5 +1,6 @@
-$(document).ready(() => {
 
+$(document).ready(() => {
+    let tokens;
 
     $("#loginbutton").on('click', function (e) {
         e.preventDefault();
@@ -9,6 +10,7 @@ $(document).ready(() => {
             url: "api/login/Authenticate",
             data: $('#loginform').serialize(),
             success: function (token) {
+                tokens = token;
                 $.ajax({
                     type: "get",
                     url: "api/login",
@@ -29,3 +31,4 @@ $(document).ready(() => {
 
 
 })
+
