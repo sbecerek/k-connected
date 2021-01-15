@@ -1,4 +1,5 @@
 ﻿using k_connected.API.Models;
+using k_connected.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,10 +21,10 @@ namespace k_connected.Controllers
         {
             ctx = new kconnectedDBContext();
         }
-        private void sendEmailViaWebApi(string to,string from,string tomail)
+        private void sendEmailViaWebApi(string to,string from,string tomail, string text)
         {
             string subject = "Someone reached you on k-connected";
-            string body = "Hello " + to + ", I checked your profile on k-connected reach me on the platform, " + from ;
+            string body =  text + "\n" + from ;
             string FromMail = "mailkconnected@gmail.com";
             string emailTo = tomail;
             MailMessage mail = new MailMessage();
@@ -40,12 +41,12 @@ namespace k_connected.Controllers
 
 
         [HttpPost("sendmail")]
-        public ActionResult SendMail([FromBody] string to)
+        public ActionResult SendMail([FromBody] Message message)
         {
             var from = CurrentUser.Username;
-            Entity touser = ctx.Entity.Where(u => u.Username == to).FirstOrDefault();
+            Entity touser = ctx.Entity.Where(u => u.Username == message.Username).FirstOrDefault();
 
-            sendEmailViaWebApi(to, from, touser.Email );
+            sendEmailViaWebApi(message.Username, from, touser.Email,message.Text );
 
             return Ok();
         }

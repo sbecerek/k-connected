@@ -8,13 +8,19 @@ $(document).ready(() => {
 
 
     //MAP RELATED CODE BELOW
-    var greenIcon = new L.Icon({
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
+    var userIcon = new L.Icon({
+        iconUrl: '../me_logo.png',
+        iconSize: [25, 25],
+        iconAnchor: [12, 12],
+        popupAnchor: [1, -10],
+
+      });
+      var otherIcon = new L.Icon({
+        iconUrl: '../other_logo.png',
+        iconSize: [25, 25],
+        iconAnchor: [12, 12],
+        popupAnchor: [1, -10],
+
       });
 
 
@@ -89,12 +95,17 @@ $(document).ready(() => {
 
 
         users.forEach(user => {
-            let knowledges = [];
+            let knowledges = document.createElement("div");
+            knowledges.classList.add('knowledges');
             user.knowledge.forEach(k => {
-                knowledges.push(k.skillName);
+                cell = document.createElement("div");
+                cell.classList.add('cellbox');
+                cell.innerHTML =  k.skillName ;
+                knowledges.appendChild(cell);
             })
 
-            knowledges = JSON.stringify(knowledges);
+
+            //knowledges = JSON.stringify(knowledges);
             console.log(knowledges);
 
             L.esri.Geocoding.geocode().address(user.apartment + user.street).city(user.city).region(user.country).run(function (err, results, response) {
@@ -107,12 +118,14 @@ $(document).ready(() => {
                 let pointcoordinate = guesses[0][0].latlng;// first index is the one with highest score double indexing since this has many dimensions
 
                 //console.log(pointcoordinate);
-                let m = L.marker([pointcoordinate.lat,pointcoordinate.lng]).bindPopup( user.username + " " + knowledges + 
-                '<br/><button type="button" class="btn btn-primary sidebar-open-button" ">Send a mail</button>'
+                let m = L.marker([pointcoordinate.lat,pointcoordinate.lng],{icon:otherIcon}).bindPopup( user.username + " " + 
+                '<br/>' + $(knowledges).html() +
+                '<br/><textarea id="messagebox" name="text" placeholder="Write your message here"></textarea>' +
+                '<br/><button type="button" class="btn btn-primary sidebar-open-button" style="width:100%; border-radius:30px;" ">Send a mail</button>'
                 ).on("popupopen",()=>{
                     $(".btn").on("click",(e)=>{
                         e.preventDefault();
-                        sendMail(user.username);
+                        sendMail(user.username,$('#messagebox').val());
                     })
                 }).openPopup().addTo(map);
                 markers.push(m);
@@ -124,16 +137,23 @@ $(document).ready(() => {
 
     function displayUser(users)
     {
+            const popupOptions = { className: "customPopup" };
+
             users.forEach(user => {
             if(user.username != "admin" )
             {
                 
-                let knowledges = [];
+                let knowledges = document.createElement("div");
+                knowledges.classList.add('knowledges');
                 user.knowledge.forEach(k => {
-                    knowledges.push(k.skillName);
+                    cell = document.createElement("p");
+                    cell.classList.add('cellbox');
+                    cell.innerHTML =  k.skillName ;
+                    knowledges.appendChild(cell);
                 })
+
     
-                knowledges = JSON.stringify(knowledges);
+                //knowledges = JSON.stringify(knowledges);
                 console.log(knowledges);
     
                 L.esri.Geocoding.geocode().address(user.apartment + user.street).city(user.city).region(user.country).run(function (err, results, response) {
@@ -146,21 +166,27 @@ $(document).ready(() => {
                     let pointcoordinate = guesses[0][0].latlng;// first index is the one with highest score double indexing since this has many dimensions
     
                     //console.log(pointcoordinate);
-                    userMarker = L.marker([pointcoordinate.lat,pointcoordinate.lng],{icon:greenIcon}).bindPopup( user.username + " " + knowledges
+                    userMarker = L.marker([pointcoordinate.lat,pointcoordinate.lng],{icon:userIcon}).bindPopup( user.username + " " + 
+                    '<br/>' + $(knowledges).html()
                     ).openPopup().addTo(map);
                   });
             }
         });
     }
 
-    function sendMail(username) {
+    function sendMail(username,text) {
         console.log(username);
+        let userMessage = 
+        {
+            username:username,
+            text:text
+        }
 
         $.ajax({
             type: "post",
             url: "api/mail/sendmail",
             contentType: "application/json; charset=utf8",
-            data: JSON.stringify(username),
+            data: JSON.stringify(userMessage),
             success: function (response) {
                 console.log("mail sent");
             }

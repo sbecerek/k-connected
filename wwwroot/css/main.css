@@ -40,3 +40,12 @@ body>div {
     flex-direction: row;
     justify-content: space-between;
 }
+
+.knowledges
+{
+    background-color: gray;
+    border-radius: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+}

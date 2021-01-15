@@ -51,26 +51,35 @@
     <div class="wrapper">
         <div class="title-text">
             <div class="title signup">
-                Signup Form</div>
+                Signup Now</div>
         </div>
         <div class="form-container">
             <div class="form-inner">
-                <form class="signup">
+                <form id="signupform" class="signup">
                     <div class="field">
-                        <input type="text" placeholder="Username" required>
+                        <input type="text" placeholder="Username" name="username" required>
                     </div>
-                    <div class="field" style="height: 25%;">
-                        <input type="text" placeholder="Bio" required>
-                    </div>
-                    <div class="field">
-                        <input type="password" placeholder="Password" required>
-                    </div>
-                    <div class="field">
-                        <input type="password" placeholder="Confirm password" required>
+
+                    <div style="display: flex; flex-direction: row; column-gap: 5px;">
+                        <div class="field">
+                            <input type="text" placeholder="Firstname" name="firstname" required>
+                        </div>
+                        <div class="field">
+                            <input type="text" placeholder="Lastname" name="lastname" required>
+                        </div>
                     </div>
 
 
-                    <div class="select-wrapper field">
+                    <div class="field">
+                        <input type="email" placeholder="Email" name="email" required>
+                    </div>
+
+
+                    <textarea type="text" class="field" placeholder="Bio" name="bio" style="height: 15%;"
+                        required></textarea>
+
+
+                    <div class="field">
 
                         <select name="technologyselect" id="technologyselect" multiple ">
                                 <option value=" C#">C#</option>
@@ -79,7 +88,33 @@
                     </div>
 
 
+                    <div style="display: flex; flex-direction: row; column-gap: 5px;">
+                        <div class="field">
+                            <input type="text" placeholder="Street" name="street" required>
+                        </div>
+                        <div class="field" style="width: 10vw;">
+                            <input type="int" placeholder="Apartment" name="apartment" required>
+                        </div>
+                    </div>
 
+                    <div class="field">
+                        <input type="text" placeholder="City" name="city" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Country" name="country" required>
+                    </div>
+
+
+
+
+
+
+                    <div class="field">
+                        <input type="password" id="password" placeholder="Password" name="password" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="retypePassword" placeholder="Confirm password" required>
+                    </div>
 
 
 

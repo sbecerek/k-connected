@@ -18,7 +18,7 @@ html,body{
 }
 .wrapper{
   overflow: visible;
-  height: 90%;
+  height: 95%;
   /* max-width: 390px; */
   background: #fff;
   padding: 30px;
@@ -192,11 +192,4 @@ input:invalid {
 
 #technologyselect{
     width: 100%;
-}
-
-.select-wrapper
-{
-    /* margin:  10px 10px;
-    width: 26vw; */
-    
 }
