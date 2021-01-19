@@ -49,3 +49,12 @@ body>div {
     display: flex;
     flex-direction: row;
 }
+
+#codejambutton
+{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    z-index: 5000;
+}

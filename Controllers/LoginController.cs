@@ -26,18 +26,13 @@ namespace k_connected.API.Controllers
         public ActionResult Get()
         {
             // Console.WriteLine();
-            CurrentUser.Username = HttpContext.User.Identity.Name;
+            //CurrentUser.Username = HttpContext.User.Identity.Name;
 
 
-            return Ok(CurrentUser.Username);
+            return Ok(HttpContext.User.Identity.Name);
         }
 
         // GET api/<NameController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         [AllowAnonymous]
         [HttpPost("Authenticate")]

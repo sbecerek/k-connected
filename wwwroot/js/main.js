@@ -1,5 +1,7 @@
+
 $(document).ready(() => {
-    
+    let token = sessionStorage.getItem('userToken');
+
     $("#technologyselect").select2({
         placeholder: "Select Technologies", //placeholder
         tags: true,
@@ -65,6 +67,7 @@ $(document).ready(() => {
             $.ajax({
                 type: "GET",
                 url: "api/Home/otherusers",
+                headers: { "Authorization": 'Bearer ' + token },
                 success: function (response) {
                     displayData(response);
                 }
@@ -74,6 +77,7 @@ $(document).ready(() => {
             $.ajax({
                 type: "post",
                 contentType: "application/json; charset=utf8",
+                headers: { "Authorization": 'Bearer ' + token },
                 url: "api/Technology/",
                 data: JSON.stringify(opt),
                 success: function (response) {
@@ -186,6 +190,7 @@ $(document).ready(() => {
             type: "post",
             url: "api/mail/sendmail",
             contentType: "application/json; charset=utf8",
+            headers: { "Authorization": 'Bearer ' + token },
             data: JSON.stringify(userMessage),
             success: function (response) {
                 console.log("mail sent");
@@ -198,6 +203,7 @@ $(document).ready(() => {
     $.ajax({
         type: "GET",
         url: "api/Home/otherusers",
+        headers: { "Authorization": 'Bearer ' + token },
         success: function (response) {
             console.log(response)
             displayData(response);
@@ -207,11 +213,16 @@ $(document).ready(() => {
     $.ajax({
         type: "GET",
         url: "api/Home/currentuser",
+        headers: { "Authorization": 'Bearer ' + token },
         success: function (response) {
             console.log(response)
             displayUser(response);
         }
     });
+
+
+
+    
 
 
 
