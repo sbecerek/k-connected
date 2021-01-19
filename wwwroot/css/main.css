@@ -52,9 +52,168 @@ body>div {
 
 #codejambutton
 {
+    margin: 0;
     position: absolute;
     top: 20px;
     right: 20px;
     padding: 10px;
     z-index: 5000;
+    border-radius: 20px;
+    box-shadow: none;
 }
+
+/* Popup box BEGIN */
+.hover_bkgr_fricc{
+    pointer-events: none;
+    background:rgba(0,0,0,0);
+    cursor:pointer;
+    display:none;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+    
+}
+.hover_bkgr_fricc .helper{
+    display:inline-block;
+    height:100%;
+    vertical-align:midle;
+    
+}
+.hover_bkgr_fricc > div {
+    pointer-events: all;
+    top: 200px;
+    right: 20px;
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 551px;
+    min-height: 100px;
+    vertical-align: middle;
+    width: 20%;
+    position: absolute;
+    border-radius: 8px;
+    padding: 1% 1%;
+}
+.popupCloseButton {
+    pointer-events: all;
+    background-color: #fff;
+    border: 3px solid #999;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.popupCloseButton:hover {
+    background-color: #ccc;
+}
+.trigger_popup_fricc {
+    cursor: pointer;
+    font-size: 12px;
+    margin: 20px;
+    display: inline-block;
+    font-weight: bold;
+}
+/* Popup box BEGIN */
+#codejamform
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#savebutton
+{
+    margin-top: 5px;
+    border-radius: 1%;
+}
+
+#viewcodejambutton
+{
+    margin: 0;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    padding: 10px;
+    z-index: 5000;
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+
+/* Popup box BEGIN */
+.hover_bkgr_fricc1{
+    pointer-events: none;
+    background:rgba(0,0,0,0);
+    cursor:pointer;
+    display:none;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+    
+}
+.hover_bkgr_fricc1 .helper{
+    display:inline-block;
+    height:100%;
+    vertical-align:midle;
+    
+}
+.hover_bkgr_fricc1 > div {
+    pointer-events: all;
+    top: 200px;
+    right: 20px;
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 551px;
+    min-height: 100px;
+    vertical-align: middle;
+    width: 20%;
+    position: absolute;
+    border-radius: 8px;
+    padding: 1% 1%;
+}
+.popupCloseButton {
+    pointer-events: all;
+    background-color: #fff;
+    border: 3px solid #999;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.popupCloseButton:hover {
+    background-color: #ccc;
+}
+.trigger_popup_fricc1 {
+    cursor: pointer;
+    font-size: 12px;
+    margin: 20px;
+    display: inline-block;
+    font-weight: bold;
+}
+/* Popup box BEGIN */

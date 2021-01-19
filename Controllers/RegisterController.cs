@@ -39,11 +39,11 @@ namespace k_connected.Controllers
                 objDataContext.SaveChanges();
                 foreach (var t in technologyselect)
                 {
-                    string l = objDataContext.Skill.Where(x => x.SkillName == t).Select(x=>x.SkillName).FirstOrDefault();
+                    string l = objDataContext.Skills.Where(x => x.SkillName == t).Select(x=>x.SkillName).FirstOrDefault();
                     Knowledge k = new Knowledge();
                     k.SkillName = l;
                     k.Username = username;
-                    objDataContext.Knowledge.Add(k);
+                    objDataContext.Knowledges.Add(k);
                     objDataContext.SaveChanges();
                 }
                 

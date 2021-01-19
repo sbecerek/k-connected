@@ -22,7 +22,7 @@ namespace k_connected.API.Controllers
         {
 
 
-            var q = ctx.Entity.Where(user => user.Username != HttpContext.User.Identity.Name).Include(k => k.Knowledge).ThenInclude(k => k.SkillNameNavigation).ToList();        
+            var q = ctx.Entities.Where(user => user.Username != HttpContext.User.Identity.Name).Include(k => k.Knowledge).ThenInclude(k => k.SkillNameNavigation).ToList();        
 
             return Ok(q);
 
@@ -34,7 +34,7 @@ namespace k_connected.API.Controllers
         {
 
 
-            var q = ctx.Entity.Where(user => user.Username == HttpContext.User.Identity.Name).Include(k => k.Knowledge).ThenInclude(k => k.SkillNameNavigation).ToList();
+            var q = ctx.Entities.Where(user => user.Username == HttpContext.User.Identity.Name).Include(k => k.Knowledge).ThenInclude(k => k.SkillNameNavigation).ToList();
 
             return Ok(q);
 

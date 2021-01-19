@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace k_connected.API.Models
 {
     public partial class Entity
     {
         public Entity()
         {
-            Knowledge = new HashSet<Knowledge>();
+            Knowledges = new HashSet<Knowledge>();
         }
 
         public string Username { get; set; }
@@ -20,6 +22,6 @@ namespace k_connected.API.Models
         public string Street { get; set; }
         public int Apartment { get; set; }
 
-        public virtual ICollection<Knowledge> Knowledge { get; set; }
+        public virtual ICollection<Knowledge> Knowledges { get; set; }
     }
 }

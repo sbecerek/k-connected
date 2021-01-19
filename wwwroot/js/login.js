@@ -36,6 +36,7 @@ $(document).ready(() => {
     const signupLink = document.querySelector("form .signup-link a");
 
 
+    
 
     $('#signupbutton').on('click',function (e) {
         window.location.replace("../register.html")

@@ -44,7 +44,7 @@ namespace k_connected.Controllers
         public ActionResult SendMail([FromBody] Message message)
         {
             var from = HttpContext.User.Identity.Name;
-            Entity touser = ctx.Entity.Where(u => u.Username == message.Username).FirstOrDefault();
+            Entity touser = ctx.Entities.Where(u => u.Username == message.Username).FirstOrDefault();
 
             sendEmailViaWebApi(message.Username, from, touser.Email,message.Text );
 

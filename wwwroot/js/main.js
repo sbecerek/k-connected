@@ -5,7 +5,7 @@ $(document).ready(() => {
     $("#technologyselect").select2({
         placeholder: "Select Technologies", //placeholder
         tags: true,
-        tokenSeparators: ['/',',',';'," "] 
+        tokenSeparators: ['/', ',', ';', " "]
     });
 
 
@@ -16,14 +16,14 @@ $(document).ready(() => {
         iconAnchor: [12, 12],
         popupAnchor: [1, -10],
 
-      });
-      var otherIcon = new L.Icon({
+    });
+    var otherIcon = new L.Icon({
         iconUrl: '../other_logo.png',
         iconSize: [25, 25],
         iconAnchor: [12, 12],
         popupAnchor: [1, -10],
 
-      });
+    });
 
 
     let userMarker;
@@ -88,12 +88,11 @@ $(document).ready(() => {
 
     });
 
-    
 
 
-    function displayData(users)
-    {
-        markers.forEach(marker=>{
+
+    function displayData(users) {
+        markers.forEach(marker => {
             map.removeLayer(marker);
         })
 
@@ -104,7 +103,7 @@ $(document).ready(() => {
             user.knowledge.forEach(k => {
                 cell = document.createElement("div");
                 cell.classList.add('cellbox');
-                cell.innerHTML =  k.skillName ;
+                cell.innerHTML = k.skillName;
                 knowledges.appendChild(cell);
             })
 
@@ -114,76 +113,74 @@ $(document).ready(() => {
 
             L.esri.Geocoding.geocode().address(user.apartment + user.street).city(user.city).region(user.country).run(function (err, results, response) {
                 if (err) {
-                  console.log(err);
-                  return;
+                    console.log(err);
+                    return;
                 }
 
                 let guesses = Object.values(results);
                 let pointcoordinate = guesses[0][0].latlng;// first index is the one with highest score double indexing since this has many dimensions
 
                 //console.log(pointcoordinate);
-                let m = L.marker([pointcoordinate.lat,pointcoordinate.lng],{icon:otherIcon}).bindPopup( user.username + " " + 
-                '<br/>' + $(knowledges).html() +
-                '<br/><textarea id="messagebox" name="text" placeholder="Write your message here"></textarea>' +
-                '<br/><button type="button" class="btn btn-primary sidebar-open-button" style="width:100%; border-radius:30px;" ">Send a mail</button>'
-                ).on("popupopen",()=>{
-                    $(".btn").on("click",(e)=>{
+                let m = L.marker([pointcoordinate.lat, pointcoordinate.lng], { icon: otherIcon }).bindPopup(user.username + " " +
+                    '<br/>' + $(knowledges).html() +
+                    '<br/><textarea id="messagebox" name="text" placeholder="Write your message here"></textarea>' +
+                    '<br/><button type="button" class="btn btn-primary sidebar-open-button" style="width:100%; border-radius:30px;" ">Send a mail</button>'
+                ).on("popupopen", () => {
+                    $(".btn").on("click", (e) => {
                         e.preventDefault();
-                        sendMail(user.username,$('#messagebox').val());
+                        sendMail(user.username, $('#messagebox').val());
                     })
                 }).openPopup().addTo(map);
                 markers.push(m);
-              });
+            });
         });
     }
 
 
 
-    function displayUser(users)
-    {
-            const popupOptions = { className: "customPopup" };
+    function displayUser(users) {
+        const popupOptions = { className: "customPopup" };
 
-            users.forEach(user => {
-            if(user.username != "admin" )
-            {
-                
+        users.forEach(user => {
+            if (user.username != "admin") {
+
                 let knowledges = document.createElement("div");
                 knowledges.classList.add('knowledges');
                 user.knowledge.forEach(k => {
                     cell = document.createElement("p");
                     cell.classList.add('cellbox');
-                    cell.innerHTML =  k.skillName ;
+                    cell.innerHTML = k.skillName;
                     knowledges.appendChild(cell);
                 })
 
-    
+
                 //knowledges = JSON.stringify(knowledges);
                 console.log(knowledges);
-    
+
                 L.esri.Geocoding.geocode().address(user.apartment + user.street).city(user.city).region(user.country).run(function (err, results, response) {
                     if (err) {
-                      console.log(err);
-                      return;
+                        console.log(err);
+                        return;
                     }
-    
+
                     let guesses = Object.values(results);
                     let pointcoordinate = guesses[0][0].latlng;// first index is the one with highest score double indexing since this has many dimensions
-    
+
                     //console.log(pointcoordinate);
-                    userMarker = L.marker([pointcoordinate.lat,pointcoordinate.lng],{icon:userIcon}).bindPopup( user.username + " " + 
-                    '<br/>' + $(knowledges).html()
+                    userMarker = L.marker([pointcoordinate.lat, pointcoordinate.lng], { icon: userIcon }).bindPopup(user.username + " " +
+                        '<br/>' + $(knowledges).html()
                     ).openPopup().addTo(map);
-                  });
+                });
             }
         });
     }
 
-    function sendMail(username,text) {
+    function sendMail(username, text) {
         console.log(username);
-        let userMessage = 
+        let userMessage =
         {
-            username:username,
-            text:text
+            username: username,
+            text: text
         }
 
         $.ajax({
@@ -197,7 +194,7 @@ $(document).ready(() => {
             }
         });
 
-      }
+    }
 
 
     $.ajax({
@@ -222,8 +219,25 @@ $(document).ready(() => {
 
 
 
-    
 
 
+
+    //codejam popup
+
+    $(".trigger_popup_fricc").click(function () {
+        $('.hover_bkgr_fricc').show();
+    });
+
+    $('.popupCloseButton').click(function () {
+        $('.hover_bkgr_fricc').hide();
+    });
+
+    $(".trigger_popup_fricc1").click(function () {
+        $('.hover_bkgr_fricc1').show();
+    });
+
+    $('.popupCloseButton').click(function () {
+        $('.hover_bkgr_fricc1').hide();
+    });
 
 })

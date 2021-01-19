@@ -29,7 +29,7 @@ namespace k_connected.API.Controllers
         public ActionResult Filter([FromBody]string[] opt)
         {
 
-            var wholedb = ctx.Entity.Where(user => user.Username != HttpContext.User.Identity.Name).Include(k => k.Knowledge).ThenInclude(k => k.SkillNameNavigation).ToList();
+            var wholedb = ctx.Entities.Where(user => user.Username != HttpContext.User.Identity.Name).Include(k => k.Knowledges).ThenInclude(k => k.SkillNameNavigation).ToList();
             System.Console.WriteLine(opt);
             var filtered = new List<Entity>();
             filtered.Clear();
@@ -39,7 +39,7 @@ namespace k_connected.API.Controllers
 
                 foreach(var item in wholedb)
                 {
-                    foreach(var s in item.Knowledge)
+                    foreach(var s in item.Knowledges)
                     {
                         if (s.SkillName == skill)
                             filtered.Add(item);

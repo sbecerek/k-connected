@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace k_connected.API.Models
 {
     public partial class Knowledge
