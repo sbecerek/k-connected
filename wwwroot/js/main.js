@@ -98,18 +98,18 @@ $(document).ready(() => {
 
 
         users.forEach(user => {
-            let knowledges = document.createElement("div");
-            knowledges.classList.add('knowledges');
-            user.knowledge.forEach(k => {
+            let knowledge = document.createElement("div");
+            knowledge.classList.add('knowledges');
+            user.knowledges.forEach(k => {
                 cell = document.createElement("div");
                 cell.classList.add('cellbox');
                 cell.innerHTML = k.skillName;
-                knowledges.appendChild(cell);
+                knowledge.appendChild(cell);
             })
 
 
             //knowledges = JSON.stringify(knowledges);
-            console.log(knowledges);
+            console.log(knowledge);
 
             L.esri.Geocoding.geocode().address(user.apartment + user.street).city(user.city).region(user.country).run(function (err, results, response) {
                 if (err) {
@@ -122,7 +122,7 @@ $(document).ready(() => {
 
                 //console.log(pointcoordinate);
                 let m = L.marker([pointcoordinate.lat, pointcoordinate.lng], { icon: otherIcon }).bindPopup(user.username + " " +
-                    '<br/>' + $(knowledges).html() +
+                    '<br/>' + $(knowledge).html() +
                     '<br/><textarea id="messagebox" name="text" placeholder="Write your message here"></textarea>' +
                     '<br/><button type="button" class="btn btn-primary sidebar-open-button" style="width:100%; border-radius:30px;" ">Send a mail</button>'
                 ).on("popupopen", () => {
@@ -144,18 +144,18 @@ $(document).ready(() => {
         users.forEach(user => {
             if (user.username != "admin") {
 
-                let knowledges = document.createElement("div");
-                knowledges.classList.add('knowledges');
-                user.knowledge.forEach(k => {
+                let knowledge = document.createElement("div");
+                knowledge.classList.add('knowledges');
+                user.knowledges.forEach(k => {
                     cell = document.createElement("p");
                     cell.classList.add('cellbox');
                     cell.innerHTML = k.skillName;
-                    knowledges.appendChild(cell);
+                    knowledge.appendChild(cell);
                 })
 
 
                 //knowledges = JSON.stringify(knowledges);
-                console.log(knowledges);
+                console.log(knowledge);
 
                 L.esri.Geocoding.geocode().address(user.apartment + user.street).city(user.city).region(user.country).run(function (err, results, response) {
                     if (err) {
@@ -168,7 +168,7 @@ $(document).ready(() => {
 
                     //console.log(pointcoordinate);
                     userMarker = L.marker([pointcoordinate.lat, pointcoordinate.lng], { icon: userIcon }).bindPopup(user.username + " " +
-                        '<br/>' + $(knowledges).html()
+                        '<br/>' + $(knowledge).html()
                     ).openPopup().addTo(map);
                 });
             }
@@ -190,7 +190,7 @@ $(document).ready(() => {
             headers: { "Authorization": 'Bearer ' + token },
             data: JSON.stringify(userMessage),
             success: function (response) {
-                console.log("mail sent");
+                alert("We delivered your message")
             }
         });
 
@@ -218,6 +218,20 @@ $(document).ready(() => {
     });
 
 
+    $('#savebutton').on('click',function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "post",
+            url: "api/codejam/register",
+            headers: { "Authorization": 'Bearer ' + token },
+            data: $('#codejamform').serialize(),
+            success: function (response) {
+                console.log(response);
+            }
+        });
+
+    })
 
 
 

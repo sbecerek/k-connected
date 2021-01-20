@@ -1,5 +1,4 @@
 ﻿using k_connected.API.Models;
-using k_connected.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;

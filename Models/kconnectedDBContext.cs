@@ -37,17 +37,13 @@ namespace k_connected.API.Models
 
             modelBuilder.Entity<CodeJam>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("CodeJam");
+
+                entity.Property(e => e.CodejamId).HasColumnName("CodejamID");
 
                 entity.Property(e => e.City)
                     .HasMaxLength(20)
                     .IsUnicode(false);
-
-                entity.Property(e => e.CodejamId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("CodejamID");
 
                 entity.Property(e => e.Country)
                     .HasMaxLength(20)
@@ -63,8 +59,13 @@ namespace k_connected.API.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Title)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("title");
+
                 entity.HasOne(d => d.HostNavigation)
-                    .WithMany()
+                    .WithMany(p => p.CodeJams)
                     .HasForeignKey(d => d.Host)
                     .HasConstraintName("FK__CodeJam__Host__5BE2A6F2");
             });

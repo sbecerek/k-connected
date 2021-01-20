@@ -14,6 +14,7 @@ namespace k_connected.API.Models
         public string City { get; set; }
         public string Street { get; set; }
         public int? Apartment { get; set; }
+        public string Title { get; set; }
 
         public virtual Entity HostNavigation { get; set; }
     }

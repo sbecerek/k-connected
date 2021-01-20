@@ -29,7 +29,7 @@ namespace k_connected
         
         public string Authenticate(string username, string password)
         {
-            if (!users.Any(u => u.Key == username && u.Value == password) && !ctx.Entity.Any(u => u.Username == username && u.Passwd == password))
+            if (!users.Any(u => u.Key == username && u.Value == password) && !ctx.Entities.Any(u => u.Username == username && u.Passwd == password))
                 return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();

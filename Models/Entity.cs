@@ -9,6 +9,7 @@ namespace k_connected.API.Models
     {
         public Entity()
         {
+            CodeJams = new HashSet<CodeJam>();
             Knowledges = new HashSet<Knowledge>();
         }
 
@@ -22,6 +23,7 @@ namespace k_connected.API.Models
         public string Street { get; set; }
         public int Apartment { get; set; }
 
+        public virtual ICollection<CodeJam> CodeJams { get; set; }
         public virtual ICollection<Knowledge> Knowledges { get; set; }
     }
 }
