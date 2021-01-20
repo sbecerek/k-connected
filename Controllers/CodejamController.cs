@@ -14,7 +14,15 @@ namespace k_connected.Controllers
     [Route("api/[controller]")]
     public class CodejamController : Controller
     {
-
+        [HttpGet]
+        public ActionResult Get()
+        {
+            using (kconnectedDBContext objDataContext = new kconnectedDBContext())
+            {
+                var q = objDataContext.CodeJams.ToList();
+                return Ok(q);
+            }
+        }
 
 
         // POST: RegisterController/Create

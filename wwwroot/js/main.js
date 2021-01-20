@@ -217,8 +217,54 @@ $(document).ready(() => {
         }
     });
 
+    downloadCodeJams();
 
-    $('#savebutton').on('click',function (e) {
+    function downloadCodeJams() {
+        $.ajax({
+            type: "GET",
+            url: "api/Codejam",
+            headers: { "Authorization": 'Bearer ' + token },
+            success: function (response) {
+                console.log(response)
+                displayCodeJams(response);
+            }
+        });
+
+    }
+
+    function displayCodeJams(data) {
+        console.log(data);
+        document.getElementById("jamlist").innerHTML = "";
+        data.forEach(codejam => {
+
+            jamwrapper = document.createElement('div');
+            jamwrapper.classList.add('jam');
+
+
+            title = document.createElement("p");
+            title.innerHTML = codejam.title;
+            user = document.createElement("p");
+            user.innerHTML = " Hosted by @" + codejam.host;
+            desc = document.createElement("p");
+            desc.innerHTML = codejam.descp;
+
+            titlewrapper = document.createElement("div");
+            titlewrapper.innerHTML = $(title).html() + $(user).html()
+
+            jamwrapper.appendChild(titlewrapper);
+            jamwrapper.appendChild(desc);
+
+            //jamwrapper.innerHTML = codejam.title + " " + codejam.host + " " + codejam.descp; 
+            //still here
+            $('#jamlist').append(jamwrapper);
+            $('#jamlist').append(document.createElement("hr"));
+
+        })
+    }
+
+
+
+    $('#savebutton').on('click', function (e) {
         e.preventDefault();
 
         $.ajax({
@@ -228,6 +274,7 @@ $(document).ready(() => {
             data: $('#codejamform').serialize(),
             success: function (response) {
                 console.log(response);
+                downloadCodeJams();
             }
         });
 
@@ -240,18 +287,50 @@ $(document).ready(() => {
 
     $(".trigger_popup_fricc").click(function () {
         $('.hover_bkgr_fricc').show();
+        map.dragging.disable();
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.scrollWheelZoom.disable();
+        map.boxZoom.disable();
+        map.keyboard.disable();
+        if (map.tap) map.tap.disable();
+
     });
 
     $('.popupCloseButton').click(function () {
         $('.hover_bkgr_fricc').hide();
+        map.dragging.enable();
+        map.touchZoom.enable();
+        map.doubleClickZoom.enable();
+        map.scrollWheelZoom.enable();
+        map.boxZoom.enable();
+        map.keyboard.enable();
+        if (map.tap) map.tap.enable();
+
     });
 
     $(".trigger_popup_fricc1").click(function () {
         $('.hover_bkgr_fricc1').show();
+        map.dragging.disable();
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.scrollWheelZoom.disable();
+        map.boxZoom.disable();
+        map.keyboard.disable();
+        if (map.tap) map.tap.disable();
+        
     });
 
     $('.popupCloseButton').click(function () {
         $('.hover_bkgr_fricc1').hide();
+        map.dragging.enable();
+        map.touchZoom.enable();
+        map.doubleClickZoom.enable();
+        map.scrollWheelZoom.enable();
+        map.boxZoom.enable();
+        map.keyboard.enable();
+        if (map.tap) map.tap.enable();
+        
     });
 
 })
