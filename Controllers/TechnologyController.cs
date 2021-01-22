@@ -37,11 +37,13 @@ namespace k_connected.API.Controllers
             foreach(string skill in opt)
             {
 
-                foreach(var item in wholedb)
+                foreach(Entity item in wholedb)
                 {
-                    foreach(var s in item.Knowledges)
+                    foreach(Knowledge s in item.Knowledges)
                     {
-                        if (s.SkillName == skill)
+                        //System.Console.WriteLine(s.SkillName.Length);
+                        //System.Console.WriteLine(skill.Length);
+                        if (s.SkillName.Equals(skill))
                             filtered.Add(item);
                     }
 
