@@ -17,8 +17,8 @@ html,body{
   color: #fff;
 }
 .wrapper{
-  overflow: visible;
-  height: 95%;
+  overflow: hidden;
+  height: 85vh;
   /* max-width: 390px; */
   background: #fff;
   padding: 30px;
@@ -95,7 +95,7 @@ input[type="radio"]{
 }
 .wrapper .form-container{
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   height: 100%;
 }
 .form-container .form-inner{
@@ -215,4 +215,28 @@ select:required
 
 #technologyselect{
     width: 100%;
+}
+
+
+.form-inner form .field textarea{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+.form-inner form .field textarea:focus{
+  border-color: #a383fc;
+  /* box-shadow: inset 0 0 3px #fb6aae; */
+}
+.form-inner form .field textarea::placeholder{
+  color: #999;
+  transition: all 0.3s ease;
+}
+form .field textarea:focus::placeholder{
+  color: #b3b3b3;
 }

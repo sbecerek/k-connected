@@ -47,8 +47,8 @@ $(document).ready(() => {
                     window.location.replace("../index.html");
                 }
             });
-        else
-            alert("Invalid signup form")
+        
+            //alert("Invalid signup form")
         
     })
 
