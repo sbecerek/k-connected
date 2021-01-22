@@ -30,21 +30,25 @@ $(document).ready(() => {
 
 
     $('#savebutton').on('click',function (e) {
-        validate();
-        e.preventDefault();
+        let isvalid = validate();
+        //e.preventDefault();
 
+        
 
-
-        console.log($('#signupform').serialize());
-        $.ajax({
-            type: "post",
-            url: "api/register",
-            data: $('#signupform').serialize(),
-            success: function (response) {
-                console.log(response)
-                window.location.replace("../index.html");
-            }
-        });
+        
+        if(isvalid)
+        //console.log($('#signupform').serialize());
+            $.ajax({
+                type: "post",
+                url: "api/register",
+                data: $('#signupform').serialize(),
+                success: function (response) {
+                    console.log(response)
+                    window.location.replace("../index.html");
+                }
+            });
+        else
+            alert("Invalid signup form")
         
     })
 

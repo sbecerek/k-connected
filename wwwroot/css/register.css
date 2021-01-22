@@ -187,8 +187,31 @@ input:required {
   box-shadow:none;
 }
 input:invalid {
-
+  border: 1px solid #1a0d5f;
 }
+
+textarea:invalid
+{
+  border: 1px solid #1a0d5f;
+}
+
+textarea:required
+{
+  box-shadow: none;
+}
+
+
+select:invalid
+{
+  border: 1px solid #1a0d5f;
+}
+
+select:required
+{
+  box-shadow: none;
+}
+
+
 
 #technologyselect{
     width: 100%;

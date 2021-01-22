@@ -3,7 +3,7 @@ $(document).ready(() => {
     let token = sessionStorage.getItem('userToken');
 
     $("#technologyselect").select2({
-        placeholder: "Select Technologies", //placeholder
+        placeholder: "Select Technologies - Multiple Selection Behaves like OR", //placeholder
         tags: true,
         tokenSeparators: ['/', ',', ';', " "]
     });
