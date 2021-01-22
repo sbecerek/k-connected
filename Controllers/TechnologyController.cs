@@ -46,15 +46,8 @@ namespace k_connected.API.Controllers
                         if (s.SkillName.Equals(skill))
                             filtered.Add(item);
                     }
-
-                
                 }
-
-
             }
-
-           
-
             return Ok(filtered);
         }
     }
