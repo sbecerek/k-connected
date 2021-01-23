@@ -187,14 +187,7 @@ form .btn input[type="submit"]{
 input:required {
   box-shadow:none;
 }
-input:invalid {
-  border: 1px solid #1a0d5f;
-}
 
-textarea:invalid
-{
-  border: 1px solid #1a0d5f;
-}
 
 textarea:required
 {
@@ -202,10 +195,7 @@ textarea:required
 }
 
 
-select:invalid
-{
-  border: 1px solid #1a0d5f;
-}
+
 
 select:required
 {
